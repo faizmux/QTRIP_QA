@@ -17,12 +17,13 @@ import org.testng.annotations.DataProvider;
 
 public class DP {
     // TODO: use correct annotation to connect the Data Provider with your Test Cases
-    @DataProvider (name = "testcase1")
+    @DataProvider(name = "testcase1")
     public Object[][] dpMethod(Method m) throws IOException {
         int rowIndex = 0;
         int cellIndex = 0;
 
-        String filePath = "/home/crio-user/workspace/faizm77869-ME_QTRIP_QA_V2/app/src/test/resources/DatasetsforQTrip.xlsx";
+        String filePath =
+                "/home/crio-user/workspace/faizm77869-ME_QTRIP_QA_V2/app/src/test/resources/DatasetsforQTrip.xlsx";
         List<List> outputList = new ArrayList<List>();
 
         FileInputStream excelFile = new FileInputStream(new File(filePath));
@@ -50,11 +51,132 @@ public class DP {
                 outputList.add(innerList);
 
         }
-
         excelFile.close();
 
-        String[][] stringArray = outputList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+        String[][] stringArray =
+                outputList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
         return stringArray;
+    }
 
+    @DataProvider(name = "testcase2")
+    public Object[][] dpMethod1(Method m) throws IOException {
+        int rowIndex = 0;
+        int cellIndex = 0;
+
+        String filePath =
+                "/home/crio-user/workspace/faizm77869-ME_QTRIP_QA_V2/app/src/test/resources/DatasetsforQTrip.xlsx";
+        List<List> outputList = new ArrayList<List>();
+
+        FileInputStream excelFile = new FileInputStream(new File(filePath));
+        Workbook workbook = new XSSFWorkbook(excelFile);
+        Sheet selectedSheet = workbook.getSheet("TestCase02");
+        Iterator<Row> iterator = selectedSheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+            List<String> innerList = new ArrayList<String>();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                if (rowIndex > 0 && cellIndex > 0) {
+                    if (cell.getCellType() == CellType.STRING) {
+                        innerList.add(cell.getStringCellValue());
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        innerList.add(String.valueOf(cell.getNumericCellValue()));
+                    }
+                }
+                cellIndex = cellIndex + 1;
+            }
+            rowIndex = rowIndex + 1;
+            cellIndex = 0;
+            if (innerList.size() > 0)
+                outputList.add(innerList);
+
+        }
+        excelFile.close();
+
+        String[][] stringArray =
+                outputList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+        return stringArray;
+    }
+
+    @DataProvider(name = "testcase3")
+    public Object[][] dpMethod2(Method m) throws IOException {
+        int rowIndex = 0;
+        int cellIndex = 0;
+
+        String filePath = "src/test/resources/DatasetsforQTrip.xlsx";
+        List<List> outputList = new ArrayList<List>();
+
+        FileInputStream excelFile = new FileInputStream(new File(filePath));
+        Workbook workbook = new XSSFWorkbook(excelFile);
+        Sheet selectedSheet = workbook.getSheet("TestCase03");
+        Iterator<Row> iterator = selectedSheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+            List<String> innerList = new ArrayList<String>();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                if (rowIndex > 0 && cellIndex > 0) {
+                    if (cell.getCellType() == CellType.STRING) {
+                        innerList.add(cell.getStringCellValue());
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        innerList.add(String.valueOf(cell.getNumericCellValue()));
+                    }
+                }
+                cellIndex = cellIndex + 1;
+            }
+            rowIndex = rowIndex + 1;
+            cellIndex = 0;
+            if (innerList.size() > 0)
+                outputList.add(innerList);
+
+        }
+        excelFile.close();
+
+        String[][] stringArray =
+                outputList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+        return stringArray;
+    }
+
+    @DataProvider(name = "testcase4")
+    public Object[][] dpMethod3(Method m) throws IOException {
+        int rowIndex = 0;
+        int cellIndex = 0;
+
+        String filePath =
+                "/home/crio-user/workspace/faizm77869-ME_QTRIP_QA_V2/app/src/test/resources/DatasetsforQTrip.xlsx";
+        List<List> outputList = new ArrayList<List>();
+
+        FileInputStream excelFile = new FileInputStream(new File(filePath));
+        Workbook workbook = new XSSFWorkbook(excelFile);
+        Sheet selectedSheet = workbook.getSheet("TestCase04");
+        Iterator<Row> iterator = selectedSheet.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+            List<String> innerList = new ArrayList<String>();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                if (rowIndex > 0 && cellIndex > 0) {
+                    if (cell.getCellType() == CellType.STRING) {
+                        innerList.add(cell.getStringCellValue());
+                    } else if (cell.getCellType() == CellType.NUMERIC) {
+                        innerList.add(String.valueOf(cell.getNumericCellValue()));
+                    }
+                }
+                cellIndex = cellIndex + 1;
+            }
+            rowIndex = rowIndex + 1;
+            cellIndex = 0;
+            if (innerList.size() > 0)
+                outputList.add(innerList);
+
+        }
+        excelFile.close();
+
+        String[][] stringArray =
+                outputList.stream().map(u -> u.toArray(new String[0])).toArray(String[][]::new);
+        return stringArray;
     }
 }

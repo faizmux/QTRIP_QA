@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HomePage {
 
@@ -21,7 +22,7 @@ public class HomePage {
 
     public HomePage(RemoteWebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver,20),this);
     }
 
     public void navigateToHome() {
@@ -47,6 +48,29 @@ public class HomePage {
 
     public void logOutUser() {
         logout_Btn.click();
+    }
+
+    public void searchCity(String city) throws InterruptedException{
+        Thread.sleep(2000);
+        //wrapper.sendKeys(search_txtBox, city);
+        search_txtBox.clear();
+        search_txtBox.sendKeys(city);
+        Thread.sleep(1000);
+    }
+
+    public Boolean AssertAutoCompleteText(String city){
+        if(city_txt.getText().toLowerCase().equals(city.toLowerCase())){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void selectCity() throws InterruptedException{
+        //wrapper.click(city_txt);
+        city_txt.click();
+        Thread.sleep(5000);
     }
 
 }
