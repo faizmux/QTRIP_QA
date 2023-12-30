@@ -7,7 +7,7 @@ build
 app/chromedriver.log
 app/bin
 app/screenshots
-
+app/QTrip_Images
 HELP.md
 .gradle
 /build/

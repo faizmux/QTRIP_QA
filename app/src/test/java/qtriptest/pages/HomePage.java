@@ -1,5 +1,7 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
+import com.google.common.base.Equivalence.Wrapper;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +35,7 @@ public class HomePage {
 
     public void navigateToRegister() {
         if (!driver.getCurrentUrl().endsWith("/register/")) {
-            reg_Btn.click();
+            SeleniumWrapper.click(reg_Btn, driver);
         }
     }
 
@@ -52,9 +54,9 @@ public class HomePage {
 
     public void searchCity(String city) throws InterruptedException{
         Thread.sleep(2000);
-        //wrapper.sendKeys(search_txtBox, city);
-        search_txtBox.clear();
-        search_txtBox.sendKeys(city);
+        SeleniumWrapper.sendKeys(search_txtBox, city);
+        // search_txtBox.clear();
+        // search_txtBox.sendKeys(city);
         Thread.sleep(1000);
     }
 
@@ -68,8 +70,8 @@ public class HomePage {
     }
 
     public void selectCity() throws InterruptedException{
-        //wrapper.click(city_txt);
-        city_txt.click();
+        SeleniumWrapper.click(city_txt, driver);
+        //city_txt.click();
         Thread.sleep(5000);
     }
 

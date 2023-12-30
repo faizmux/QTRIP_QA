@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -54,13 +55,15 @@ public class AdventurePage {
 
     public void searchAdventure(String adventureName) throws InterruptedException {
         Thread.sleep(3000);
-        searchAdventure.sendKeys(adventureName);
+        SeleniumWrapper.sendKeys(searchAdventure, adventureName);
+        //searchAdventure.sendKeys(adventureName);
 
     }
 
     public void clickAdventure() throws InterruptedException {
         Thread.sleep(3000);
-        selectAdventure.click();
+        SeleniumWrapper.click(selectAdventure, driver);
+        //selectAdventure.click();
 
     }
 
@@ -86,7 +89,8 @@ public class AdventurePage {
         if (getResultCount() != 0) {
             WebElement adventure = adventureDataContainer
                     .findElement(By.xpath("//h5[text()='" + adventureName + "']"));
-            adventure.click();
+            SeleniumWrapper.click(adventure, driver);
+            //adventure.click();
         } else {
             System.out.println("There are no adventures for the chosen filters");
         }

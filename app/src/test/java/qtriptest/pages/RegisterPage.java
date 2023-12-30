@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import java.util.UUID;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class RegisterPage {
-
+    
     RemoteWebDriver driver;
     public String last_generated_username;
 
@@ -43,18 +44,18 @@ public class RegisterPage {
 
     public Boolean registerNewUser(String userName, String password, boolean makeUserDynamic)
             throws InterruptedException {
-        // SeleniumWrapper wrapper = new SeleniumWrapper(driver);
+        //SeleniumWrapper wrapper = new SeleniumWrapper(driver);
         if (makeUserDynamic){
         userName = userName+"."+ UUID.randomUUID().toString();
         }
-        // wrapper.sendKeys(email_TxtBox, username);
-        // wrapper.sendKeys(pass_TxtBox, password);
-        // wrapper.sendKeys(conf_pass, password);
-        // wrapper.click(reg_Btn);
-        emailTextBox.sendKeys(userName);
-        passwordTextBox.sendKeys(password);
-        confrimPasswordTextBox.sendKeys(password);
-        registerNowButton.click();
+        SeleniumWrapper.sendKeys(emailTextBox, userName);
+        SeleniumWrapper.sendKeys(passwordTextBox, password);
+        SeleniumWrapper.sendKeys(confrimPasswordTextBox, password);
+        SeleniumWrapper.click(registerNowButton, driver);
+        // emailTextBox.sendKeys(userName);
+        // passwordTextBox.sendKeys(password);
+        // confrimPasswordTextBox.sendKeys(password);
+        // registerNowButton.click();
         this.last_generated_username = userName;
         Thread.sleep(5000);
         return this.driver.getCurrentUrl().endsWith("/login");

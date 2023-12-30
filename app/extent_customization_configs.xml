@@ -1,0 +1,25 @@
+<configuration>
+    <!-- Set the theme for the test report -->
+    <theme>standard</theme>
+
+    <!-- Set the name of the test report -->
+    <documentTitle>My Test Report</documentTitle>
+
+    <!-- Specify the character encoding for the generated report -->
+    <encoding>UTF-8</encoding>
+
+    <!-- Configure screenshot settings -->
+    <takeScreenShot>true</takeScreenShot>
+    <screenCapturePath>/screenshots/</screenCapturePath>
+
+    <!-- Include a timestamp in the report name -->
+    <uniqueTimeStamp>true</uniqueTimeStamp>
+
+    <!-- Customize test view options -->
+    <displayOrder>OLDEST_FIRST</displayOrder>
+    <testViewStatus>BOTH</testViewStatus>
+    <!-- Other possible options: NAME, OLDEST_FIRST, NEWEST_FIRST, FAILED_FIRST, SKIPPED_FIRST, CONFIGURATION_FIRST -->
+
+    <!-- Enable network charts in the report -->
+    <chartLocation>BOTTOM</chartLocation>
+</configuration>

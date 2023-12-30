@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -50,16 +51,20 @@ public class AdventureDetailsPage {
         try {
             Thread.sleep(5000);
             // Enter name of the guest
-            guestNameTextBox.sendKeys(GuestName);
+            SeleniumWrapper.sendKeys(guestNameTextBox, GuestName);
+            //guestNameTextBox.sendKeys(GuestName);
             // Enter date of adventure
-            dateBox.sendKeys(Date);
+            SeleniumWrapper.sendKeys(dateBox, Date);
+            //dateBox.sendKeys(Date);
             Thread.sleep(3000);
-            personCountBox.clear();
+            SeleniumWrapper.sendKeys(personCountBox, count);
+            //personCountBox.clear();
             // Enter guest count
-            personCountBox.sendKeys(count);
+            //personCountBox.sendKeys(count);
             Thread.sleep(3000);
             // do the reservation
-            reserveButton.click();
+            SeleniumWrapper.click(reserveButton, driver);
+            //reserveButton.click();
             Thread.sleep(3000);
         } catch (Exception e) {
             System.out.println(e);

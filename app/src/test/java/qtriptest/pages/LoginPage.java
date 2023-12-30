@@ -1,5 +1,6 @@
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -38,18 +39,17 @@ public class LoginPage {
 
     public void performLogin(String username, String password) throws InterruptedException{
         //SeleniumWrapper wrapper = new SeleniumWrapper(driver);
-        // wrapper.sendKeys(email_txtBox, username);
-        // wrapper.sendKeys(pass_txtBox, password);
-        // wrapper.click(login_Btn);
-        emailTextBox.sendKeys(username);
-        passwordTextBox.sendKeys(password);
-        loginButton.click();
+        SeleniumWrapper.sendKeys(emailTextBox, username);
+        SeleniumWrapper.sendKeys(passwordTextBox, password);
+        SeleniumWrapper.click(loginButton, driver);
+        // emailTextBox.sendKeys(username);
+        // passwordTextBox.sendKeys(password);
+        // loginButton.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         
         // if(driver.switchTo().alert().getText().equals("You have logged in Succesfully !")){
         //     driver.switchTo().alert().accept();
         // }
-        Thread.sleep(5000);
     }
 }

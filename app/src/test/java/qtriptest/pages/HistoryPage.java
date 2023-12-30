@@ -1,6 +1,8 @@
 
 package qtriptest.pages;
 
+import qtriptest.SeleniumWrapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.openqa.selenium.By;
@@ -25,7 +27,8 @@ public class HistoryPage {
     // Navigate to reservations page
     public boolean goToReservationsPage() {
         try {
-            reservationsButton.click();
+            SeleniumWrapper.click(reservationsButton, driver);
+            //reservationsButton.click();
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -100,9 +103,10 @@ public class HistoryPage {
 
         if (transactionID != null) {
             try {
-                WebElement cancleButton =
+                WebElement cancelButton =
                         driver.findElement(By.xpath("//button[@id='" + transactionID + "']"));
-                cancleButton.click();
+                SeleniumWrapper.click(cancelButton, driver);
+                //cancleButton.click();
                 return true;
 
             } catch (NoSuchElementException e) {
