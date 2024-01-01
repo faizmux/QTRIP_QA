@@ -23,7 +23,7 @@ public class ReportSingleton {
         report = new ExtentReports(System.getProperty("user.dir") + "/OurExtentReport" + timestampString + ".html", true);
         report.loadConfig(new File(System.getProperty("user.dir") + "/extent_customization_configs.xml"));
         test = report.startTest("Qtrip");
-        System.out.println("returned value of test = "+test);
+        //System.out.println("returned value of test = "+test);
     }
 
     public static ReportSingleton getInstanceOfSingletonReportClass() {

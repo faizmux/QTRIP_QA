@@ -50,7 +50,7 @@ public class testCase_04 {
     public void TestCase04(String NewUserName, String Password, String dataset1, String dataset2,
             String dataset3) throws InterruptedException, IOException {
 
-        // test1 = reports.startTest("TestCase04", "Verify that booking history can be viewed");
+        //test1 = reports.startTest("Verify that booking history can be viewed");
         SoftAssert sa = new SoftAssert();
         HistoryPage history = new HistoryPage(driver);
         HomePage home = new HomePage(driver);
@@ -109,14 +109,13 @@ public class testCase_04 {
         test1.log(LogStatus.PASS, "Expected Reservations are present on the reservation page");
         sa.assertAll();
         test1.log(LogStatus.INFO, test1.addScreenCapture(ReportSingleton.capture(driver)));
+        reportSingleton.getReport().endTest(test1);
     }
+
     @AfterSuite(alwaysRun = true)
     public void tearDown() {
-        reportSingleton.getReport().endTest(test1);
         reportSingleton.getReport().flush();
         driver.quit();
         reportSingleton.closeReport();
     }
-
-
 }

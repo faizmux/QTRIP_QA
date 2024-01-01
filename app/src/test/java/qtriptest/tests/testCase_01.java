@@ -49,8 +49,9 @@ public class testCase_01 {
 
     @Test(description = "User onboarding Flow", dataProvider = "testcase1",
             dataProviderClass = DP.class, priority = 1, groups = {"Login Flow"})
-    public void TestCase01(String userName, String password) throws InterruptedException, IOException {
-        // test = reports.startTest("User onboarding Flow");
+    public void TestCase01(String userName, String password)
+            throws InterruptedException, IOException {
+        // test1 = reports.startTest("User onboarding Flow");
         boolean status;
         HomePage home = new HomePage(driver);
         RegisterPage register = new RegisterPage(driver);
@@ -65,7 +66,7 @@ public class testCase_01 {
                 "Testcase_01: Failed to navigte to the register page");
 
         status = register.registerNewUser(userName, password, true);
-        // test.log(LogStatus.PASS, "User registration successful");
+        test1.log(LogStatus.PASS, "User registration successful");
         Thread.sleep(1000);
 
         // Verify if the we are sucessfully navigated to login page.
@@ -78,32 +79,27 @@ public class testCase_01 {
 
         // Verify if user logged in
         status = home.isUserLoggedIn();
-        // test.log(LogStatus.PASS, "User Logged in Successfully");
+        test1.log(LogStatus.PASS, "User Logged in Successfully");
         sa.assertTrue(home.isUserLoggedIn(), "Testcase_01: Failed to login user");
 
         // log out the current user
         home.logOutUser();
         status = home.isUserloggedOut();
-        // test.log(LogStatus.PASS, "User logged out successfully");
+        test1.log(LogStatus.PASS, "User logged out successfully");
         // verify the user logged out.
         sa.assertTrue(home.isUserloggedOut(), "Testcase_01: Failed to logout user");
         sa.assertAll();
-        // test.log(LogStatus.INFO, test.addScreenCapture(ReportSingleton.capture(driver)));
+        test1.log(LogStatus.INFO, test1.addScreenCapture(ReportSingleton.capture(driver)));
 
         test1.log(LogStatus.PASS, "Test Step Passed");
-    }
-
-    // @AfterSuite
-    // public void flush() {
-    //     reports.endTest(test);
-    //     reports.flush();
-    // }
-
-    @AfterSuite(alwaysRun = true)
-    public void tearDown() {
         reportSingleton.getReport().endTest(test1);
-        reportSingleton.getReport().flush();
-        driver.quit();
-        reportSingleton.closeReport();
     }
+
+    // @AfterSuite(alwaysRun = true)
+    // public void tearDown() {
+    // reportSingleton.getReport().endTest(test1);
+    // reportSingleton.getReport().flush();
+    // driver.quit();
+    // reportSingleton.closeReport();
+    // }
 }

@@ -53,7 +53,7 @@ public class testCase_03 {
                         String adventureName, String GuestName, String Date, String count)
                         throws InterruptedException, IOException {
 
-                // test = reports.startTest("TestCase03", "Verify the adventure booking and cancellation flow");
+                //test1 = reports.startTest("Verify the adventure booking and cancellation flow");
 
                 SoftAssert sa = new SoftAssert();
                 WebDriverWait wait = new WebDriverWait(driver, 15);
@@ -132,15 +132,15 @@ public class testCase_03 {
                 test1.log(LogStatus.PASS, "TransactionID is not present");
                 sa.assertAll();
                 test1.log(LogStatus.INFO, test1.addScreenCapture(ReportSingleton.capture(driver)));
+                reportSingleton.getReport().endTest(test1);
         }
 
-        @AfterSuite(alwaysRun = true)
-        public void tearDown() {
-            reportSingleton.getReport().endTest(test1);
-            reportSingleton.getReport().flush();
-            driver.quit();
-            reportSingleton.closeReport();
-        }
+        // @AfterSuite(alwaysRun = true)
+        // public void tearDown() {
+        //     reportSingleton.getReport().flush();
+        //     driver.quit();
+        //     reportSingleton.closeReport();
+        // }
 
 }
 
