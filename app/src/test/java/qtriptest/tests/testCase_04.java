@@ -51,6 +51,7 @@ public class testCase_04 {
             String dataset3) throws InterruptedException, IOException {
 
         //test1 = reports.startTest("Verify that booking history can be viewed");
+        test1 = reportSingleton.startTest("Verify that booking history can be viewed");
         SoftAssert sa = new SoftAssert();
         HistoryPage history = new HistoryPage(driver);
         HomePage home = new HomePage(driver);

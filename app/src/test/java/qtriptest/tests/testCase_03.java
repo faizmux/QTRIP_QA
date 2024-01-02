@@ -54,6 +54,7 @@ public class testCase_03 {
                         throws InterruptedException, IOException {
 
                 //test1 = reports.startTest("Verify the adventure booking and cancellation flow");
+                test1 = reportSingleton.startTest("Verify the adventure booking and cancellation flow");
 
                 SoftAssert sa = new SoftAssert();
                 WebDriverWait wait = new WebDriverWait(driver, 15);

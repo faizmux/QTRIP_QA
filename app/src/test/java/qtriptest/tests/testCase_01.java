@@ -51,7 +51,8 @@ public class testCase_01 {
             dataProviderClass = DP.class, priority = 1, groups = {"Login Flow"})
     public void TestCase01(String userName, String password)
             throws InterruptedException, IOException {
-        // test1 = reports.startTest("User onboarding Flow");
+        //test1 = reports.startTest("User onboarding Flow");
+        test1 = reportSingleton.startTest("User onboarding Flow");
         boolean status;
         HomePage home = new HomePage(driver);
         RegisterPage register = new RegisterPage(driver);

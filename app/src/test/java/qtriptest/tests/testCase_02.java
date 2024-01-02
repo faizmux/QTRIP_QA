@@ -46,7 +46,8 @@ public class testCase_02 {
         public void TestCase02(String city, String category, String duration,
                         String expectedFilterCount, String expectedUnFilterCount)
                         throws InterruptedException, IOException {
-                //test1 = reports.startTest("Verify Search and Filter flow working fine");
+                // test1 = reports.startTest("Verify Search and Filter flow working fine");
+                test1 = reportSingleton.startTest("Verify Search and Filter flow working fine");
                 HomePage home = new HomePage(driver);
                 AdventurePage adventure = new AdventurePage(driver);
                 SoftAssert sa = new SoftAssert();
@@ -89,10 +90,10 @@ public class testCase_02 {
                 reportSingleton.getReport().endTest(test1);
         }
 
-        @AfterSuite(alwaysRun = true)
-        public void tearDown() {
-                reportSingleton.getReport().flush();
-                driver.quit();
-                reportSingleton.closeReport();
-        }
+        // @AfterSuite(alwaysRun = true)
+        // public void tearDown() {
+        //         reportSingleton.getReport().flush();
+        //         driver.quit();
+        //         reportSingleton.closeReport();
+        // }
 }

@@ -19,11 +19,8 @@ public class ReportSingleton {
     private ReportSingleton() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String timestampString = String.valueOf(timestamp.getTime());
-        // report = new ExtentReports(System.getProperty("user.dir") + "/OurExtentReport.html");
         report = new ExtentReports(System.getProperty("user.dir") + "/OurExtentReport" + timestampString + ".html", true);
         report.loadConfig(new File(System.getProperty("user.dir") + "/extent_customization_configs.xml"));
-        test = report.startTest("Qtrip");
-        //System.out.println("returned value of test = "+test);
     }
 
     public static ReportSingleton getInstanceOfSingletonReportClass() {
@@ -31,6 +28,11 @@ public class ReportSingleton {
             instanceOfSingletonReportClass = new ReportSingleton();
         }
         return instanceOfSingletonReportClass;
+    }
+
+    public ExtentTest startTest(String testName) {
+        test = report.startTest(testName);
+        return test;
     }
 
     public ExtentTest getTest() {
